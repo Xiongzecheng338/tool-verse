@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+  }
+  
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-slate-600 rounded-full;
+  }
+  
+  ::selection {
+    @apply bg-indigo-500/30 text-indigo-700 dark:text-indigo-300;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-white/30 dark:border-slate-700/30;
+  }
+  
+  .glass-dark {
+    @apply bg-slate-900/80 backdrop-blur-md border border-slate-700/50;
+  }
+  
+  .tool-card {
+    @apply transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .tool-card:hover {
+    @apply -translate-y-1 scale-[1.02];
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-[length:200%_200%] animate-gradient-x;
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 
+           active:scale-95 transition-all duration-200 shadow-lg shadow-indigo-500/25;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-200 
+           rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 active:scale-95 transition-all duration-200;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 
+           rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 
+           dark:focus:ring-pink-500 dark:focus:border-pink-500 outline-none transition-all;
+  }
+  
+  .category-icon {
+    @apply text-2xl transition-transform duration-300;
+  }
+  
+  .tool-card:hover .category-icon {
+    @apply rotate-12 scale-110;
+  }
+  
+  .spinner {
+    @apply border-4 border-indigo-500/20 border-t-indigo-500 rounded-full w-10 h-10 animate-spin;
+  }
+  
+  .fade-in {
+    @apply animate-slide-up;
+  }
+  
+  .typing-effect::after {
+    content: '|';
+    @apply animate-blink;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .tooltip {
+    @apply absolute z-50 px-2 py-1 text-xs text-white bg-slate-800 dark:bg-slate-200 dark:text-slate-800 
+           rounded shadow-lg opacity-0 pointer-events-none transition-opacity duration-200;
+  }
+  
+  .tooltip.show {
+    @apply opacity-100;
+  }
+  
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center;
+  }
+  
+  .modal-content {
+    @apply bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-lg w-full mx-4 max-h-[90vh] overflow-auto;
+  }
+  
+  .code-block {
+    @apply font-mono text-sm bg-slate-900 text-gray-100 rounded-lg p-4 overflow-x-auto;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300;
+  }
+  
+  .badge-error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
